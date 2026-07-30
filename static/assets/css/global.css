@@ -63,7 +63,9 @@ body {
    color: var(--text-placeholder);
    opacity: 1;
 }
-
+body {
+  cursor: url("cursor.png"), auto;
+}
 .main {
    letter-spacing: 0px;
    font-family: "Inter", sans-serif;
