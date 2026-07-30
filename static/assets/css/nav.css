@@ -1,6 +1,3 @@
-/* ====================== FIXED & OPTIMIZED VERSION ====================== */
-
-/* Material Symbols Outlined Font Variation Settings */
 .material-symbols-outlined {
   font-variation-settings:
     "FILL" 0,
@@ -9,36 +6,32 @@
     "opsz" 48;
 }
 
-/* Navbar icon container */
 .f-nav #icon-container {
   display: flex;
   align-items: center;
 }
 
-/* Responsive image fix */
 img {
   width: 100%;
   height: 100%;
-  padding-top: 5px; /* keep your original padding if needed */
+  padding-top: 5px;
 }
 
-/* Sidebar container */
 .f-nav-container {
   min-width: 5vw;
   min-height: 10vh;
   display: inline;
 }
 
-/* Main sidebar (desktop) */
 .f-nav {
   position: fixed;
   top: 15px;
   left: 15px;
   bottom: 15px;
-  width: 220px;
+  width: 170px;           /* SMALLER SIDEBAR */
   min-height: unset;
   box-sizing: border-box;
-  padding: 25px 15px;
+  padding: 30px 15px;     /* more padding */
   background-color: var(--background-nav);
   box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: var(--backdrop-filter);
@@ -50,7 +43,7 @@ img {
   transition: 0.35s ease;
 }
 
-/* Single nav item */
+/* Big icons */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -58,10 +51,10 @@ img {
   display: block;
   width: 100%;
   height: auto;
-  margin: 0 0 30px 0;
+  margin: 0 0 35px 0;
   text-align: center;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 42px;        /* BIGGER ICON TEXT */
   font-family: "Inter", sans-serif;
   cursor: pointer;
   color: var(--text-primary);
@@ -72,21 +65,21 @@ img {
 }
 
 .f-nav .icon:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
   font-weight: 800;
 }
 
-/* Right column (links) */
+/* Right column */
 .f-nav-right {
   position: static;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 15px;
   transform: none;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 26px;        /* BIGGER TEXT */
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -94,8 +87,8 @@ img {
 .f-nav-right .navbar-link {
   width: 100%;
   box-sizing: border-box;
-  margin: 5px 0;
-  padding: 12px 15px;
+  margin: 8px 0;
+  padding: 14px 15px;
   text-align: left;
   text-transform: uppercase;
   cursor: pointer;
@@ -111,27 +104,25 @@ img {
 
 .f-nav-right .navbar-link:hover {
   font-size: inherit;
-  transform: translateX(5px);
+  transform: translateX(6px);
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Main content area */
+/* Main content */
 .main {
-  margin-left: 250px;
+  margin-left: 195px;     /* adjusted for smaller sidebar */
 }
 
-/* ====================== RESPONSIVE BREAKPOINTS ====================== */
+/* Responsive */
 @media (max-width: 768px) {
   .f-nav {
     width: 70px;
     padding: 15px 8px;
   }
-
   .f-nav-right .navbar-link {
     text-align: center;
     padding: 12px 5px;
   }
-
   .main {
     margin-left: 85px;
   }
