@@ -23,6 +23,7 @@ img {
   display: inline;
 }
 
+/* ====================== FADE-IN BOX SIDEBAR ====================== */
 .f-nav {
   position: fixed;
   top: 15px;
@@ -41,9 +42,12 @@ img {
   display: flex;
   flex-direction: column;
   transition: 0.35s ease;
+  opacity: 0;
+  pointer-events: none;
   overflow: hidden;
 }
 
+/* Small box state */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -54,7 +58,7 @@ img {
   margin: 0 0 35px 0;
   text-align: center;
   text-transform: uppercase;
-  font-size: 30px;   /* TINY BIT SMALLER */
+  font-size: 42px;
   font-family: "Inter", sans-serif;
   cursor: pointer;
   color: var(--text-primary);
@@ -70,7 +74,7 @@ img {
 }
 
 .f-nav .icon {
-  font-size: 50px;
+  font-size: 42px;
   color: var(--text-primary);
   margin: 0 0 35px 0;
   text-align: center;
@@ -83,6 +87,7 @@ img {
   font-weight: 800;
 }
 
+/* Right column (app boxes) */
 .f-nav-right {
   position: static;
   display: flex;
@@ -92,7 +97,7 @@ img {
   margin-top: 15px;
   transform: none;
   text-transform: uppercase;
-  font-size: 30px;   /* TINY BIT SMALLER */
+  font-size: 26px;
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -121,6 +126,7 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* Main content — perfectly centered */
 .main {
   margin-left: 0;
   display: flex;
@@ -144,7 +150,7 @@ img {
 }
 
 .main .info-text {
-  font-size: 30px;
+  font-size: 18px;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
   font-style: italic;
@@ -170,6 +176,7 @@ img {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
+/* Responsive */
 @media (max-width: 768px) {
   .f-nav {
     width: 70px;
