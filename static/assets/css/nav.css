@@ -54,7 +54,7 @@ img {
   margin: 0 0 35px 0;
   text-align: center;
   text-transform: uppercase;
-  font-size: 10px;   /* TINY BIT SMALLER */
+  font-size: 30px;   /* TINY BIT SMALLER */
   font-family: "Inter", sans-serif;
   cursor: pointer;
   color: var(--text-primary);
@@ -70,7 +70,7 @@ img {
 }
 
 .f-nav .icon {
-  font-size: 20px;
+  font-size: 30px;
   color: var(--text-primary);
   margin: 0 0 35px 0;
   text-align: center;
