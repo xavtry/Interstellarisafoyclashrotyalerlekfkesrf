@@ -120,8 +120,9 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
+/* MAIN CONTENT — NO MARGIN LEFT, PERFECT CENTER */
 .main {
-  margin-left: 0;
+  margin-left: 0;                    /* FIXED — zero extra space */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -139,7 +140,7 @@ img {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   margin-bottom: 30px;
   letter-spacing: 4px;
-  margin-top: -1000px;   /* MOVED UP A LOT (this is the final move up) */
+  margin-top: -100px;   /* MOVED UP A LOT — this is the big final move up */
 }
 
 .main .info-text {
