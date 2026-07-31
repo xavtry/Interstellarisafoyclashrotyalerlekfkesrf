@@ -23,15 +23,16 @@ img {
   display: inline;
 }
 
+/* ====================== SIDEBAR ====================== */
 .f-nav {
   position: fixed;
   top: 15px;
   left: 15px;
   bottom: 15px;
-  width: 170px;           /* SMALLER SIDEBAR */
+  width: 170px;
   min-height: unset;
   box-sizing: border-box;
-  padding: 30px 15px;     /* more padding */
+  padding: 30px 15px;
   background-color: var(--background-nav);
   box-shadow: 0 0 15px 2px rgba(0, 0, 0, 0.5);
   -webkit-backdrop-filter: var(--backdrop-filter);
@@ -43,7 +44,7 @@ img {
   transition: 0.35s ease;
 }
 
-/* Big icons */
+/* Big icons (shell, + , ? , etc.) */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -54,7 +55,7 @@ img {
   margin: 0 0 35px 0;
   text-align: center;
   text-transform: uppercase;
-  font-size: 42px;        /* BIGGER ICON TEXT */
+  font-size: 42px;
   font-family: "Inter", sans-serif;
   cursor: pointer;
   color: var(--text-primary);
@@ -69,7 +70,22 @@ img {
   font-weight: 800;
 }
 
-/* Right column */
+/* Categories (GAMES, APPS, TABS, SETTING) */
+.f-nav .icon {
+  font-size: 42px;
+  color: var(--text-primary);
+  margin: 0 0 35px 0;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.f-nav .icon:hover {
+  transform: scale(1.05);
+  font-weight: 800;
+}
+
+/* Right column (the app boxes) */
 .f-nav-right {
   position: static;
   display: flex;
@@ -79,7 +95,7 @@ img {
   margin-top: 15px;
   transform: none;
   text-transform: uppercase;
-  font-size: 26px;        /* BIGGER TEXT */
+  font-size: 26px;
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -108,12 +124,61 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Main content */
+/* Main content area */
 .main {
-  margin-left: 195px;     /* adjusted for smaller sidebar */
+  margin-left: 195px;
 }
 
-/* Responsive */
+/* ====================== CENTERED CLAM TITLE & BUTTON ====================== */
+.main {
+  margin-left: 195px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 20px;
+  box-sizing: border-box;
+}
+
+.main .clam-title {
+  font-size: 92px;
+  font-weight: 900;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  margin-bottom: 30px;
+  letter-spacing: 4px;
+}
+
+.main .info-text {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 20px;
+  font-style: italic;
+}
+
+.main .action-button {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 600;
+  padding: 18px 60px;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  font-family: "Inter", sans-serif;
+}
+
+.main .action-button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ====================== RESPONSIVE ====================== */
 @media (max-width: 768px) {
   .f-nav {
     width: 70px;
@@ -125,5 +190,14 @@ img {
   }
   .main {
     margin-left: 85px;
+    justify-content: center;
+    padding: 30px 15px;
+  }
+  .main .clam-title {
+    font-size: 72px;
+  }
+  .main .action-button {
+    font-size: 20px;
+    padding: 16px 50px;
   }
 }
