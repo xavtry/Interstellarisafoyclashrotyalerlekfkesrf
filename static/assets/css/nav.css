@@ -23,7 +23,6 @@ img {
   display: inline;
 }
 
-/* ====================== SIDEBAR ====================== */
 .f-nav {
   position: fixed;
   top: 15px;
@@ -44,7 +43,6 @@ img {
   transition: 0.35s ease;
 }
 
-/* Big icons (shell, + , ? , etc.) */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -70,7 +68,6 @@ img {
   font-weight: 800;
 }
 
-/* Categories (GAMES, APPS, TABS, SETTING) */
 .f-nav .icon {
   font-size: 42px;
   color: var(--text-primary);
@@ -85,7 +82,6 @@ img {
   font-weight: 800;
 }
 
-/* Right column (the app boxes) */
 .f-nav-right {
   position: static;
   display: flex;
@@ -124,12 +120,6 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Main content area */
-.main {
-  margin-left: 195px;
-}
-
-/* ====================== CENTERED CLAM TITLE & BUTTON ====================== */
 .main {
   margin-left: 195px;
   display: flex;
@@ -178,7 +168,7 @@ img {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* ====================== RESPONSIVE ====================== */
+/* Responsive */
 @media (max-width: 768px) {
   .f-nav {
     width: 70px;
