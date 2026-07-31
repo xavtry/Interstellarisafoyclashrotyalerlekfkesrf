@@ -125,7 +125,7 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Main content — PERFECTLY CENTERED (this fixes it) */
+/* Main content — PERFECTLY CENTERED (this is the part that fixes it) */
 .main {
   margin-left: 0;                    /* FIXED — zero extra space */
   display: flex;
