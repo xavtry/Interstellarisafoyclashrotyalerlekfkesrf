@@ -139,6 +139,7 @@ img {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   margin-bottom: 30px;
   letter-spacing: 4px;
+  margin-top: -25px;        /* moved up a little */
 }
 
 .main .info-text {
@@ -160,6 +161,7 @@ img {
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   font-family: "Inter", sans-serif;
+  margin-left: 10px;        /* moved left a little */
 }
 
 .main .action-button:hover {
