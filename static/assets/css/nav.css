@@ -139,7 +139,7 @@ img {
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
   margin-bottom: 30px;
   letter-spacing: 4px;
-  margin-top: -40px;   /* MOVED UP A LOT (this is the final move up) */
+  margin-top: -100px;   /* MOVED UP A LOT (this is the final move up) */
 }
 
 .main .info-text {
