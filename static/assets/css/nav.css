@@ -42,10 +42,10 @@ img {
   display: flex;
   flex-direction: column;
   transition: 0.35s ease;
-  overflow: hidden; /* prevents any overflow */
+  overflow: hidden;
 }
 
-/* SMALL STATE (trigger icon) */
+/* Small trigger (shell icon) */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -85,7 +85,7 @@ img {
   font-weight: 800;
 }
 
-/* RIGHT COLUMN */
+/* Right column (app boxes) */
 .f-nav-right {
   position: static;
   display: flex;
@@ -124,7 +124,7 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* MAIN CONTENT — PERFECTLY CENTERED */
+/* Main content — perfectly centered */
 .main {
   margin-left: 0;
   display: flex;
@@ -174,7 +174,7 @@ img {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* RESPONSIVE */
+/* Responsive */
 @media (max-width: 768px) {
   .f-nav {
     width: 70px;
