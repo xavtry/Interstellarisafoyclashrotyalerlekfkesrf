@@ -42,12 +42,11 @@ img {
   display: flex;
   flex-direction: column;
   transition: 0.35s ease;
-  opacity: 1; /* visible by default */
+  opacity: 1;
   pointer-events: auto;
   overflow: hidden;
 }
 
-/* Full sidebar content */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -125,7 +124,7 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Main content — PERFECTLY CENTERED (this is the part that fixes it) */
+/* Main content — centered */
 .main {
   margin-left: 0;
   display: flex;
@@ -173,6 +172,29 @@ img {
   background: rgba(255, 255, 255, 0.2);
   transform: translateY(-4px);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* ====================== NEW CLOCK ====================== */
+.main .clock {
+  position: absolute;
+  top: 35px;
+  right: 35px;
+  font-size: 52px;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+  font-family: "Inter", sans-serif;
+  z-index: 10;
+  letter-spacing: 2px;
+}
+
+/* Responsive clock */
+@media (max-width: 768px) {
+  .main .clock {
+    font-size: 42px;
+    top: 25px;
+    right: 25px;
+  }
 }
 
 /* Responsive */
