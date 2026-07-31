@@ -23,7 +23,6 @@ img {
   display: inline;
 }
 
-/* ====================== TOGGLE SIDEBAR ====================== */
 .f-nav {
   position: fixed;
   top: 15px;
@@ -45,7 +44,6 @@ img {
   overflow: hidden;
 }
 
-/* Small trigger (shell icon) */
 .f-nav .icon {
   position: relative;
   top: auto;
@@ -56,7 +54,7 @@ img {
   margin: 0 0 35px 0;
   text-align: center;
   text-transform: uppercase;
-  font-size: 42px;
+  font-size: 38px;   /* TINY BIT SMALLER */
   font-family: "Inter", sans-serif;
   cursor: pointer;
   color: var(--text-primary);
@@ -72,7 +70,7 @@ img {
 }
 
 .f-nav .icon {
-  font-size: 42px;
+  font-size: 38px;
   color: var(--text-primary);
   margin: 0 0 35px 0;
   text-align: center;
@@ -85,7 +83,6 @@ img {
   font-weight: 800;
 }
 
-/* Right column (app boxes) */
 .f-nav-right {
   position: static;
   display: flex;
@@ -95,7 +92,7 @@ img {
   margin-top: 15px;
   transform: none;
   text-transform: uppercase;
-  font-size: 26px;
+  font-size: 24px;   /* TINY BIT SMALLER */
   color: var(--text-primary);
   font-weight: 600;
 }
@@ -124,7 +121,6 @@ img {
   background: rgba(255, 255, 255, 0.08);
 }
 
-/* Main content — perfectly centered */
 .main {
   margin-left: 0;
   display: flex;
@@ -174,7 +170,6 @@ img {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .f-nav {
     width: 70px;
