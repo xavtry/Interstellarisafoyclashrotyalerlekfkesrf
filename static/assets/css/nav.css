@@ -70,7 +70,7 @@ img {
 }
 
 .f-nav .icon {
-  font-size: 30px;
+  font-size: 50px;
   color: var(--text-primary);
   margin: 0 0 35px 0;
   text-align: center;
@@ -144,7 +144,7 @@ img {
 }
 
 .main .info-text {
-  font-size: 18px;
+  font-size: 30px;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 20px;
   font-style: italic;
