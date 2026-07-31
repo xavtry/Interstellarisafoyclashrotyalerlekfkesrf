@@ -30,6 +30,17 @@ if (config.challenge !== false) {
   });
   app.use(basicAuth({ users: config.users, challenge: true }));
 }
+function updateClock(){
+
+  const now = new Date();
+  const hours = npw.getHours();
+  const minutes = now.getMinutes();
+  const seconds = now.getSeconds();
+  const timeString = `${hours}:${minutes}:${seconds}`;
+  document.getElementById("clock").textContent = timeString;
+}
+
+updateClock();
 
 app.get("/e/*", async (req, res, next) => {
   try {
