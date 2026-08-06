@@ -9,29 +9,30 @@ import express from "express";
 import basicAuth from "express-basic-auth";
 import mime from "mime";
 import fetch from "node-fetch";
-// import { setupMasqr } from "./Masqr.js";
 import config from "./config.js";
 
 console.log(chalk.yellow("🚀 Starting server..."));
-
 const __dirname = process.cwd();
+
 const server = http.createServer();
 const app = express();
 const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
-const cache = new Map();
-const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
 
+const cache = new Map();
+const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // 30 days
+
+// Password protection
 if (config.challenge !== false) {
-  console.log(chalk.green("🔒 Password protection is enabled! Listing logins below"));
-  // biome-ignore lint: idk
+  console.log(chalk.green("🔒 Password protection is enabled!"));
   Object.entries(config.users).forEach(([username, password]) => {
     console.log(chalk.blue(`Username: ${username}, Password: ${password}`));
   });
   app.use(basicAuth({ users: config.users, challenge: true }));
+}
 
-
-app.get("/e/*", async (req, res, next) => {
+// Cache for /e/* assets
+app.get("/e/*", async (req, res) => {
   try {
     if (cache.has(req.path)) {
       const { data, contentType, timestamp } = cache.get(req.path);
@@ -43,13 +44,14 @@ app.get("/e/*", async (req, res, next) => {
       }
     }
 
+    // Base URLs for different asset versions
     const baseUrls = {
       "/e/1/": "https://raw.githubusercontent.com/qrs/x/fixy/",
       "/e/2/": "https://raw.githubusercontent.com/3v1/V5-Assets/main/",
       "/e/3/": "https://raw.githubusercontent.com/3v1/V5-Retro/master/",
     };
 
-    let reqTarget;
+    let reqTarget = "";
     for (const [prefix, baseUrl] of Object.entries(baseUrls)) {
       if (req.path.startsWith(prefix)) {
         reqTarget = baseUrl + req.path.slice(prefix.length);
@@ -57,21 +59,19 @@ app.get("/e/*", async (req, res, next) => {
       }
     }
 
-    if (!reqTarget) {
-      return next();
-    }
+    if (!reqTarget) return next();
 
     const asset = await fetch(reqTarget);
-    if (!asset.ok) {
-      return next();
-    }
+    if (!asset.ok) return next();
 
     const data = Buffer.from(await asset.arrayBuffer());
     const ext = path.extname(reqTarget);
-    const no = [".unityweb"];
-    const contentType = no.includes(ext) ? "application/octet-stream" : mime.getType(ext);
+    const contentType = ext === ".unityweb" 
+      ? "application/octet-stream" 
+      : mime.getType(ext);
 
     cache.set(req.path, { data, contentType, timestamp: Date.now() });
+
     res.writeHead(200, { "Content-Type": contentType });
     res.end(data);
   } catch (error) {
@@ -81,18 +81,14 @@ app.get("/e/*", async (req, res, next) => {
   }
 });
 
+// Other middleware
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-/* if (process.env.MASQR === "true") {
-  console.log(chalk.green("Masqr is enabled"));
-  setupMasqr(app);
-} */
-
 app.use(express.static(path.join(__dirname, "static")));
 app.use("/ca", cors({ origin: true }));
 
+// Routes
 const routes = [
   { path: "/b", file: "apps.html" },
   { path: "/a", file: "games.html" },
@@ -102,22 +98,22 @@ const routes = [
   { path: "/", file: "index.html" },
 ];
 
-// biome-ignore lint: idk
 routes.forEach(route => {
   app.get(route.path, (_req, res) => {
     res.sendFile(path.join(__dirname, "static", route.file));
   });
 });
 
-app.use((req, res, next) => {
+app.use((req, res) => {
   res.status(404).sendFile(path.join(__dirname, "static", "404.html"));
 });
 
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   console.error(err.stack);
   res.status(500).sendFile(path.join(__dirname, "static", "404.html"));
 });
 
+// Start the server
 server.on("request", (req, res) => {
   if (bareServer.shouldRoute(req)) {
     bareServer.routeRequest(req, res);
