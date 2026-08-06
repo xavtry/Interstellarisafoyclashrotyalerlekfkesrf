@@ -1,4 +1,3 @@
-import fs from "node:fs";
 import http from "node:http";
 import path from "node:path";
 import { createBareServer } from "@nebula-services/bare-server-node";
@@ -20,7 +19,7 @@ const bareServer = createBareServer("/ca/");
 const PORT = process.env.PORT || 8080;
 
 const cache = new Map();
-const CACHE_TTL = 30 * 24 * 60 * 60 * 1000; // Cache for 30 Days
+const CACHE_TTL = 30 * 24 * 60 * 60 * 1000;
 
 // Password protection
 if (config.challenge !== false) {
@@ -31,14 +30,13 @@ if (config.challenge !== false) {
   app.use(basicAuth({ users: config.users, challenge: true }));
 }
 
-// Cache for /e/* assets
+// Asset cache for /e/*
 app.get("/e/*", async (req, res) => {
   try {
     if (cache.has(req.path)) {
       const { data, contentType, timestamp } = cache.get(req.path);
-      if (Date.now() - timestamp > CACHE_TTL) {
-        cache.delete(req.path);
-      } else {
+      if (Date.now() - timestamp > CACHE_TTL) cache.delete(req.path);
+      else {
         res.writeHead(200, { "Content-Type": contentType });
         return res.end(data);
       }
@@ -58,16 +56,14 @@ app.get("/e/*", async (req, res) => {
       }
     }
 
-    if (!reqTarget) return next();
+    if (!reqTarget) return res.status(404).send("Not found");
 
     const asset = await fetch(reqTarget);
-    if (!asset.ok) return next();
+    if (!asset.ok) return res.status(404).send("Not found");
 
     const data = Buffer.from(await asset.arrayBuffer());
     const ext = path.extname(reqTarget);
-    const contentType = ext === ".unityweb" 
-      ? "application/octet-stream" 
-      : mime.getType(ext);
+    const contentType = ext === ".unityweb" ? "application/octet-stream" : mime.getType(ext);
 
     cache.set(req.path, { data, contentType, timestamp: Date.now() });
 
@@ -80,7 +76,7 @@ app.get("/e/*", async (req, res) => {
   }
 });
 
-// Other middleware
+// Middleware
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -112,7 +108,7 @@ app.use((err, req, res) => {
   res.status(500).sendFile(path.join(__dirname, "static", "404.html"));
 });
 
-// Start the server
+// Server setup
 server.on("request", (req, res) => {
   if (bareServer.shouldRoute(req)) {
     bareServer.routeRequest(req, res);
